@@ -2,6 +2,7 @@ import NextAuth from "next-auth/next"
 import { AuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import userLogin from "@/libs/userLogin"
+import getUserProfile from "@/libs/getUserProfile"
 
 export const authOptions:AuthOptions ={
     providers:[
@@ -41,7 +42,9 @@ export const authOptions:AuthOptions ={
             return {...token,...user};
         },
         async session({session,token,user}){
-            session.user = token as any;
+            const tk = {...token} as any ;
+            const profile = await getUserProfile(tk.token)
+            session.user = {...token, ...profile} as any;
             return session;
         }
     }
