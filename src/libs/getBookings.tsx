@@ -8,7 +8,7 @@ export default async function getBookings(token:string) {
     });
 
     if(!response.ok){
-        throw new Error("Failed to fetch bookings");
+        throw new Error("Failed to fetch getBookings");
     }
     return await response.json()
 }
