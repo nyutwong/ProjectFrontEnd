@@ -1,4 +1,4 @@
-export default async function userRegister(SSN:string,name:string,email:string,password:string,telephone_number:string,role:string) {
+export default async function userRegister(data:{SSN:string,name:string,email:string,password:string,telephone_number:string,role:string}) {
     
     const response = await fetch("http://localhost:5000/api/v1/auth/register",{
         method: "POST",
@@ -6,12 +6,12 @@ export default async function userRegister(SSN:string,name:string,email:string,p
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            SSN: SSN,
-            name: name,
-            email: email,
-            password: password,
-            telephone_number: telephone_number,
-            role: role,
+            SSN: data.SSN,
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            telephone_number: data.telephone_number,
+            role: data.role,
         }),
     });
     if(!response.ok){
