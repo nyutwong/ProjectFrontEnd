@@ -1,6 +1,6 @@
 export default async function createCar(license:string, type:string, model:string, color:string[], fuel_type:string, year:number, price:number, mileage:number, condition:string, image:string[], number_of_seats:number, shopId:string, token:string) {
     
-    const response = await fetch(`http://localhost:5000/api/v1/shops/${shopId}/cars`,{
+    const response = await fetch(`https://mai-chob-kin-mala-backend.vercel.app/api/v1/shops/${shopId}/cars`,{
         method: "POST",
         headers:{
             "Content-Type": "application/json",

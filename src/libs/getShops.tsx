@@ -1,5 +1,5 @@
 export default async function getShops() {
-    const response = await fetch(`http://localhost:5000/api/v1/shops`);
+    const response = await fetch(`https://mai-chob-kin-mala-backend.vercel.app/api/v1/shops`);
     if(!response.ok) {
         throw new Error("Failed to fetch getShops");
     }
