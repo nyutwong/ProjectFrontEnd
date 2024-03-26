@@ -1,18 +1,17 @@
 import Link from "next/link"
 import ProductCard from "./ProductCard"
 
-export default async function CarCatalog({carJson}:{carJson:Object}){
+export default async function CarCatalog({carJson}:{carJson:Promise<carItems>}){
     
     const carJsonReady = await carJson
-    
     return(
         <>
             Explore {carJsonReady.count} model in our catalog
             <div style={{margin:"20px",display:"flex", flexDirection:"row",flexWrap:"wrap", justifyContent:"space-around", alignContent:"space-around"}}>
                 {
-                    carJsonReady.data.map((carItem:Object)=>(
+                    carJsonReady.data.map((carItem:Car)=>(
                         <Link href={`/car/${carItem.id}`} className="w-1/5">
-                            <ProductCard carName={carItem.model} imgSrc={carItem.picture}/>
+                            <ProductCard carName={carItem.model} imgSrc={carItem.image[0]}/>
                         </Link> 
                     ))
                 }

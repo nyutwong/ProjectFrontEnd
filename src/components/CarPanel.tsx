@@ -6,11 +6,12 @@ import getCars from "@/libs/getCars"
 
 export default function CarPanel(){
 
-    const[carResponse,setCarResponse] = useState(null);
+    const[carResponse,setCarResponse] = useState<carItems>();
 
     useEffect(()=>{
         const fetchData = async() =>{
             const cars = await getCars()
+            console.log(cars);
             setCarResponse(cars);
         }
         fetchData();
@@ -36,39 +37,18 @@ export default function CarPanel(){
     const [compareList,dispatchCompare] = useReducer(compareReducer, new Set<string>())
 
     if(!carResponse) return (<p>Car Panel is Loading ...</p>)
-
     return(
         <div>
             <div style={{margin:"20px",display:"flex", flexDirection:"row",flexWrap:"wrap", justifyContent:"space-around", alignContent:"space-around"}}>
                 {
-                    carResponse.data.map((carItem:object)=>(
-                        <Link href={`/car/${carItem.id}`} className="w-1/5">
-                            <ProductCard carName={carItem.model} imgSrc={carItem.picture}
+                    carResponse.data.map((carItem)=>(
+                        <Link href={`/car/${carItem._id}`} className="w-1/5">
+                            <ProductCard carName={carItem.model} imgSrc={''}
                             onCompare={(car:string)=>dispatchCompare({type:'add',carName:car})}/>
                         </Link> 
                     ))
                 }
             </div>
-            <div className="w-full text-xl font-medium">Compare List: {compareList.size}</div>
-                {Array.from(compareList).map( (car)=><div key={car}onClick={()=>
-                dispatchCompare({type:'remove',carName:car})}>{car}</div>)}
-
-            <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 
-            px-3 py-2 shadow-sm text-white" onClick={()=>{count.current=count.current+1;alert(count.current)}}>
-                Count with local variable
-            </button> 
-            <input type="text" placeholder='Please Fill' className="block text-grey-900 
-            text-sm rounded-lg p-2 m-2 bg-purple-50 ring-1 ring-inset ring-purple-400
-            focus:outline-none focus:bg-purple-200 focus:ring-2" ref={inputRef} />
-
-            <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 
-            px-3 py-2 shadow-sm text-white"
-            onClick={()=>{
-                if(inputRef.current!=null){
-                    inputRef.current.focus();
-                }}}>
-                Focus Text Fill
-            </button> 
         </div>
     )
 }
