@@ -8,7 +8,6 @@ import { useSearchParams } from 'next/navigation'
 export default function Car(){
     const searchParams = useSearchParams()
     const query = searchParams.get('shop')
-    console.log(query)
     const cars = getCars(query);
     
     return(
