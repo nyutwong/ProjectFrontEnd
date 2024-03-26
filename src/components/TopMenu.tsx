@@ -3,7 +3,7 @@ import styles from "./topmenu.module.css";
 import Image from "next/image";
 import TopMenuItem from "./TopMenuItem";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/(auth)/api/auth/[...nextauth]/route";
 import { Link } from "@mui/material";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
@@ -30,7 +30,7 @@ export default function TopMenu() {
   // const session = await getServerSession(authOptions);
 
     return (
-      <div className="fixed top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 backdrop-brightness-100 dark:backdrop-brightness-0">
+      <div className="fixed top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 backdrop-brightness-100 dark:backdrop-brightness-0 dark:bg-gray-800">
         <Disclosure as="nav" className="">
             {({ open }) => (
                 <>
