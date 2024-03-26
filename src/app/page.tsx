@@ -3,7 +3,7 @@ import TravelCard from "@/components/TravelCard";
 
 export default function Home() {
   return (
-    <main>
+    <main className="g bg-white">
       <Banner/>
       <TravelCard/>
     </main>
