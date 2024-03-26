@@ -1,25 +1,51 @@
 import Image from "next/image";
 import getCar from "@/libs/getCar";
+import Status from "@/components/Status";
+import { authOptions } from "@/app/(auth)/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 
 export default async function CarDetailPage({params}:{params:{cid:string}}){
-    
+
+    const session = await getServerSession(authOptions);
     const CarDetail = await getCar(params.cid)
-    
+
+    console.log(session?.user.data.role)
+
     return(
         <main className="text-center p-5">
-            <h1 className="text-lg font-medium">{CarDetail.data.model}</h1>
-            <div className="flex flex-row my-5">
-                <Image src={CarDetail.data.picture} 
-                width={0} height={0} sizes="100vw"
-                className="rounded-lg w-[30%]"
-                alt="CarImage"/>
+            <h1 className="text-2xl font-bold">{CarDetail.data.model}</h1>
+            <div className="flex flex-row my-5 justify-center">
+                <Image
+                        src={CarDetail.data.image[0]}
+                        alt="CarImage"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="rounded-lg w-[30%]"
+                />
                 <div className="text-left text-md mx-5">
-                    <div>{CarDetail.data.description}</div>
-                    <div className="text-md mx-5">Door: {CarDetail.data.doors}</div>
-                    <div className="text-md mx-5">Seats: {CarDetail.data.seats}</div>
-                    <div className="text-md mx-5">Large Bags: {CarDetail.data.largebags}</div>
-                    <div className="text-md mx-5">Small Bags: {CarDetail.data.smallbags}</div>
-                    <div className="text-md mx-5">Daily Rental Rate: {CarDetail.data.dayRate}(insurance included)</div>
+                    <div>License: {CarDetail.data.license}</div>
+                    <div>Color: {CarDetail.data.color[0]}</div>
+                    <div>Fuel: {CarDetail.data.fuel_type}</div>
+                    <div>Year: {CarDetail.data.year}</div>
+                    <div>Mileage: {CarDetail.data.mileage}</div>
+                    <div>Condition: {CarDetail.data.condition}</div>
+                    <div>Shop: {CarDetail.data.shop.name}</div>
+                    <div className="ml-6 mb-3 mt-1"><Status status={CarDetail.data.status}/></div>
+                    <div><a
+                        href="/reservation"
+                        className="bg-sky-500 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-600 ml-7"
+                    >
+                        Reserve
+                    </a></div>
+                    {
+                        session?.user.data.role == "admin" ? <div><a
+                            href="/reservation"
+                            className="bg-sky-500 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-600 ml-7"
+                        >
+                            Edit Car
+                        </a></div> : null
+                    }
                 </div>
             </div>
         </main>
