@@ -8,7 +8,7 @@ export default async function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`{inter.className}`}>
+            <body className="bg-white dark:bg-gray-800">
                 <TopMenu />
                 <div className="mt-16">{children}</div>
                 <Footer />

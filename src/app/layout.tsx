@@ -10,8 +10,8 @@ import Provider from "../components/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MCKML Car Rental",
-  description: "mai-chob-kin-mala car rental service",
+    title: "MCKML Car Rental",
+    description: "mai-chob-kin-mala car rental service",
 };
 
 export default async function RootLayout({
