@@ -2,7 +2,7 @@
 import { useState } from "react"
 import VlogPlayer from "./VlogPlayer";
 import { Rating, ratingClasses } from "@mui/material";
-import { useWindowListener } from "@/hooks/useWindowListener";
+// import { useWindowListener } from "@/hooks/useWindowListener";
 
 export default function TravelCard(){
     const[playing,setPlaying] = useState(true);
