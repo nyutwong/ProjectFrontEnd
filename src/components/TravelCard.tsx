@@ -12,7 +12,8 @@ export default function TravelCard() {
         <div className="w-[80%] shadow-lg mx-[10%] my-5 px-2 py-5 rounded-lg bg-gray-200 flex flex-row">
             <iframe
                 className="w-[560px] h-[315px]"
-                src="https://www.youtube.com/embed/t9-cMiEDNyk"
+                allow="autoplay"
+                src="https://www.youtube.com/embed/t9-cMiEDNyk?autoplay=1"
             ></iframe>
             <div className="m-5">
                 <button
