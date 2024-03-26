@@ -4,6 +4,12 @@ interface carItems {
     data: Car[],
     pagination: object,
 }
+interface shopItems {
+    success: boolean,
+    count: number,
+    data: Shop[],
+    pagination: object,
+}
 
 interface Shop {
     _id: string,
@@ -13,7 +19,8 @@ interface Shop {
     openingHours: string,
     rating: number,
     createdAt: string,
-    id: string
+    id: string,
+    image: string
 }
 
 interface Booking {
@@ -47,3 +54,4 @@ interface Car {
     id: string,
     rating: number,
 }
+
