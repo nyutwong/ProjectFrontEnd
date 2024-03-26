@@ -30,7 +30,8 @@ export default function TopMenu() {
   // const session = await getServerSession(authOptions);
 
     return (
-        <Disclosure as="nav" className="bg-white dark:bg-gray-800">
+      <div className="fixed top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 backdrop-brightness-100 dark:backdrop-brightness-0">
+        <Disclosure as="nav" className="">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -194,6 +195,7 @@ export default function TopMenu() {
                 </>
             )}
         </Disclosure>
+        </div>
         // <div className={styles.menucontainer}>
         //     <Image
         //         src={"/img/logo.png"}
