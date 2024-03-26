@@ -7,6 +7,7 @@ import { AuthOptions } from "next-auth";
 import NextAuthProvider from "@/providers/NextAuthProvider";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { setEngine } from "crypto";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default async function RootLayout({
         <NextAuthProvider session={session}>
           <TopMenu/>
           {children}
+          <Footer/>
         </NextAuthProvider>
         </body>
     </html>
