@@ -44,5 +44,6 @@ interface Car {
     status: string,
     shop: Shop,
     bookings: Booking[],
-    id: string
+    id: string,
+    rating: number,
 }
