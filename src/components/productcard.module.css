@@ -1,17 +1,7 @@
-div.card{
-    width: 250px;
-    height: 300px;
-    background: white;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.2);
-    border-radius: 10px;
-    padding-top: 10px;    
+.c-card img {
+    transition: transform 0.3s ease-in-out;
 }
-div.cardimg{
-    width: 100%;
-    height: 70%;
-    position: relative;
-}
-div.cardtext{
-    height: 30%;
-    padding: 10px;
+
+.c-card:hover img {
+    transform: scale(1.1);
 }
