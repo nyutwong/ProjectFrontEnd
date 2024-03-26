@@ -9,8 +9,6 @@ export default async function CarDetailPage({params}:{params:{cid:string}}){
     const session = await getServerSession(authOptions);
     const CarDetail = await getCar(params.cid)
 
-    console.log(session?.user.data.role)
-
     return(
         <main className="text-center p-5">
             <h1 className="text-2xl font-bold">{CarDetail.data.model}</h1>
@@ -33,19 +31,11 @@ export default async function CarDetailPage({params}:{params:{cid:string}}){
                     <div>Shop: {CarDetail.data.shop.name}</div>
                     <div className="ml-6 mb-3 mt-1"><Status status={CarDetail.data.status}/></div>
                     <div><a
-                        href="/reservation"
+                        href={`/car/${params.cid}/reservation`}
                         className="bg-sky-500 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-600 ml-7"
                     >
                         Reserve
                     </a></div>
-                    {
-                        session?.user.data.role == "admin" ? <div><a
-                            href="/reservation"
-                            className="bg-sky-500 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-600 ml-7"
-                        >
-                            Edit Car
-                        </a></div> : null
-                    }
                 </div>
             </div>
         </main>
