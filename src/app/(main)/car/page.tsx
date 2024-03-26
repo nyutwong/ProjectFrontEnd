@@ -16,7 +16,7 @@ export default function Car(){
             
             <hr className="my-10"/>
             <h1 className="text-xl font-medium">Try Client-side Car Panel</h1>
-            <CarPanel/>
+            {/* <CarPanel/> */}
         </main>
     )
 } 
