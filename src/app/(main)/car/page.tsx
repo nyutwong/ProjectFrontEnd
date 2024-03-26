@@ -1,10 +1,15 @@
+'use client'
 import CarCatalog from "@/components/CarCatalog";
 import getCars from "@/libs/getCars";
 import { Suspense } from "react";
 import { LinearProgress } from "@mui/material";
+import { useSearchParams } from 'next/navigation'
 
 export default function Car(){
-    const cars = getCars();
+    const searchParams = useSearchParams()
+    const query = searchParams.get('shop')
+    console.log(query)
+    const cars = getCars(query);
     
     return(
         <main className="text-xl text-center">
