@@ -71,9 +71,9 @@ export default function TopMenu() {
                                                 href={item.href}
                                                 className={classNames(
                                                     item.current
-                                                        ? "bg-gray-900 text-white"
-                                                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                                                    "rounded-md px-3 py-2 text-sm font-medium"
+                                                        ? "bg-violet-500 text-white"
+                                                        : "text-slate-500 dark:hover:bg-gray-700 hover:text-white dark:text-slate-300",
+                                                    "rounded-md px-3 py-2 text-sm font-medium hover:bg-violet-300"
                                                 )}
                                                 aria-current={
                                                     item.current
@@ -87,10 +87,11 @@ export default function TopMenu() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                                <ThemeSwitcher />
+                            <ThemeSwitcher />
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 border-l border-slate-200 ml-6 pl-6 dark:border-slate-500">
+                            
 
-                                <Menu as="div" className="relative ml-3">
+                                <Menu as="div" className="relative">
                                     <div>
                                         <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                             <span className="absolute -inset-1.5" />
