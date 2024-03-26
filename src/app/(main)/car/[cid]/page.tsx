@@ -3,6 +3,7 @@ import getCar from "@/libs/getCar";
 import Status from "@/components/Status";
 import { authOptions } from "@/app/(auth)/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+import Link from "next/link";
 
 export default async function CarDetailPage({params}:{params:{cid:string}}){
 
@@ -30,12 +31,31 @@ export default async function CarDetailPage({params}:{params:{cid:string}}){
                     <div>Condition: {CarDetail.data.condition}</div>
                     <div>Shop: {CarDetail.data.shop.name}</div>
                     <div className="ml-6 mb-3 mt-1"><Status status={CarDetail.data.status}/></div>
-                    <div><a
-                        href={`/car/${params.cid}/reservation`}
-                        className="bg-sky-500 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-600 ml-7"
-                    >
-                        Reserve
-                    </a></div>
+                    <div className="flex">
+                        <div><Link
+                            href={`/car/${params.cid}/reservation`}
+                            className="bg-sky-500 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-600 ml-7"
+                        >
+                            Reserve
+                        </Link></div>
+                        {
+                            session?.user.data.role=='admin'? <div className="flex">
+                                <div ><Link
+                            href={`/car/${params.cid}/reservation`}
+                            className="bg-yellow-500 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-600 ml-7"
+                            >
+                                Edit
+                            </Link></div>
+
+                            <div><Link
+                                href={`/car/${params.cid}/reservation`}
+                                className="bg-red-500 text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-600 ml-7"
+                            >
+                                Delete
+                            </Link></div>
+                                </div>:""
+                        }
+                    </div>
                 </div>
             </div>
         </main>
