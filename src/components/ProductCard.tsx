@@ -4,7 +4,6 @@ import styles from "./productcard.module.css";
 import { Rating } from "@mui/material";
 
 export default function ProductCard({status,price,model,type,rating,img,size,shop}:{status:string,price:number,model:string,type:string,rating:number,img:string,size:number,shop:string}) {
-    console.log(rating);
     return (
         <div className="antialiased text-gray-900 font-sans">
             <div className="container w-full">
