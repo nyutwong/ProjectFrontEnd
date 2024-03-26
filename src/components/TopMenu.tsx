@@ -9,19 +9,22 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
+import { useSelectedLayoutSegments } from "next/navigation";
 
-const navigation = [
-    { name: "Dashboard", href: "#", current: true },
-    { name: "Team", href: "#", current: false },
-    { name: "Projects", href: "#", current: false },
-    { name: "Calendar", href: "#", current: false },
-];
+
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
 }
 
 export default function TopMenu() {
+  const path = useSelectedLayoutSegments().join('/');
+  const navigation = [
+    { name: "Home", href: "/", current:path  === '' },
+    { name: "Shop", href: "/shop", current: path === 'shop' },
+    { name: "Car", href: "/car", current: path === 'car' },
+    { name: "My Booking", href: "/booking", current: path === 'booking' },
+  ];
   const {data:session} = useSession();
   // const session = await getServerSession(authOptions);
 
