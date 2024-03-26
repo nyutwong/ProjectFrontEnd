@@ -13,6 +13,10 @@ export default function Car(){
             <Suspense fallback={<p>Loading...<LinearProgress/></p>}>
                 <CarCatalog carJson={cars}/>
             </Suspense>
+            
+            <hr className="my-10"/>
+            <h1 className="text-xl font-medium">Try Client-side Car Panel</h1>
+            {/* <CarPanel/> */}
         </main>
     )
 } 
